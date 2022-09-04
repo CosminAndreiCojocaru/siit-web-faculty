@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         if(user.equals(password)){
             //logare cu succes
             req.getSession(true).setAttribute("logged_user", user);
-            resp.sendRedirect("/customers");
+            resp.sendRedirect("/students");
         }else {
             //failed
             String errorMessage = "User and password do not match!";

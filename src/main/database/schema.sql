@@ -1,48 +1,66 @@
-DROP TABLE IF EXISTS orders_products;
+DROP TABLE IF EXISTS student;
 
-DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS course;
 
-DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS batch;
 
-DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS enrollment;
 
-CREATE TABLE customers
+
+CREATE TABLE students
 (
-  name character varying(255),
-  phone character varying(15),
-  email character varying(255),
-  birthday date,
-  id SERIAL NOT NULL,
-  CONSTRAINT customers_id_pk PRIMARY KEY (id)
+    id            char(4) primary key,
+    name          varchar(20),
+    birthday      date,
+    city          varchar(20),
+    qualification varchar(20),
+    email         varchar(30),
+    phone         varchar(20)
 );
 
-CREATE TABLE products
+CREATE TABLE course
 (
-  name character varying(255),
-  id SERIAL NOT NULL,
-  weight numeric,
-  price numeric,
-  CONSTRAINT product_id_pk PRIMARY KEY (id)
+    courseid       char(4) primary key,
+    coursename     varchar(40),
+    coursecategory varchar(20),
+    coursefees     decimal(10, 2),
+    courseduration int
 );
 
-CREATE TABLE orders
+CREATE TABLE batch
 (
-  number character varying(255),
-  placed timestamp,
-  customer_id integer,
-  id SERIAL NOT NULL,
-  CONSTRAINT order_id_pk PRIMARY KEY (id),
-  FOREIGN KEY(customer_id) REFERENCES customers 
+    batchid   char(4) primary key,
+    bsdate    date,
+    bstrength int,
+    courseid  char(4),
+    foreign key (courseid) references course (courseid)
 );
 
-CREATE TABLE orders_products
+CREATE TABLE enrollment
 (
-  order_id integer,
-  product_id integer,
-  quantity numeric,
-  id SERIAL NOT NULL,
-  CONSTRAINT order_product_id_pk PRIMARY KEY (id),
-  foreign key (order_id) references orders,
-  foreign key (product_id) references products
+    batchid char(4),
+    sid     char(4),
+    edate   date,
+    primary key (batchid, sid),
+    foreign key (sid) references student (sid),
+    foreign key (batchid) references batch (batchid)
 );
 
+CREATE TABLE teacher
+(
+    id         char(4),
+    name       varchar(20),
+    birthday   date,
+    department varchar(20) primary key,
+    dateofjoin date,
+    salary     char(6),
+    sex        varchar(1)
+
+)
+
+CREATE TABLE studentGRADEPOINT
+(
+    gradpointaverage char(4),
+    subject varchar(20),
+foreign key (subject) references teacher(department)
+);

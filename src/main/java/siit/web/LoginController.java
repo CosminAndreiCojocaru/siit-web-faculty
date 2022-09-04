@@ -33,7 +33,7 @@ public class LoginController {
             //logare cu succes
 //            mav.addObject("logged_user", userName);
             session.setAttribute("logged_user", userName);
-            mav.setViewName("redirect:/customers");
+            mav.setViewName("redirect:/students");
         } else {
             String errorMessage = "User and password do not match!";
             mav.addObject("error", errorMessage);
