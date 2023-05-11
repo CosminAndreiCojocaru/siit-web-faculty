@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class StudentDao {
+public class StudentRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -24,22 +24,6 @@ public class StudentDao {
     public Student getBy(int id) {
         String sql = "SELECT * FROM STUDENT WHERE id:: int = ?";
         return jdbcTemplate.queryForObject(sql, this::extractCustomer, id);
-    }
-
-    public List<Student> getSearch(int id){
-        String sql = "select * from student where id:: int = ?";
-        return jdbcTemplate.query(sql, this::extractSearch, id);
-    }
-
-    private Student extractSearch(ResultSet rs, int rowNumb) throws SQLException{
-        int id = rs.getInt("id");
-        String name = rs.getString("name");
-        String phone = rs.getString("phone");
-        String email = rs.getString("email");
-        Date date = rs.getDate("birthday");
-        String city = rs.getString("city");
-        String qualification = rs.getString("qualification");
-        return new Student(id, name, phone, email, date, city, qualification);
     }
 
     private Student extractCustomer(ResultSet rs, int rowNumb) throws SQLException {

@@ -114,14 +114,6 @@ public class Student {
     }
 
 
-    public List<Student> getSearch() {
-        return this.search;
-    }
-
-    public void setSearch(List<Student> search) {
-        this.search = search;
-    }
-
     @Override
     public String toString() {
         return "Student{" +

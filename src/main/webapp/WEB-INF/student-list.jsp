@@ -22,14 +22,6 @@
 </div>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<form th:action="@{/students/search}" method="get">
-    <input type="number" id="students" placeholder="Search..." name="id">
-    <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-<form action="/students/search" method="get">
-    <input type="text" name="id" placeholder="Cauta dupa ID">
-    <button type="submit">Cauta</button>
-</form>
 
 
 <table class="table table-striped">

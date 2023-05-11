@@ -2,7 +2,7 @@ package siit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import siit.db.StudentDao;
+import siit.db.StudentRepository;
 import siit.model.Student;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentService{
 
     @Autowired
-    private StudentDao customerDao;
+    private StudentRepository customerDao;
     @Autowired
     private EnrollmentService enrollmentService;
     @Autowired
@@ -34,11 +34,8 @@ public class StudentService{
         customer.setEnrollments(enrollmentService.getBy(id));
         customer.setBatches(batchService.getBy(id));
         customer.setStudentGradePoints(studentGradePointService.getBy(id));
-        customer.setSearch(customerDao.getSearch(id));
         return customer;
     }
 
-    public List<Student> search(Integer id){
-        return customerDao.getSearch(id);
-    }
+
 }
