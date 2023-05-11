@@ -26,6 +26,10 @@
     <input type="number" id="students" placeholder="Search..." name="id">
     <button type="submit"><i class="fa fa-search"></i></button>
 </form>
+<form action="/students/search" method="get">
+    <input type="text" name="id" placeholder="Cauta dupa ID">
+    <button type="submit">Cauta</button>
+</form>
 
 
 <table class="table table-striped">
