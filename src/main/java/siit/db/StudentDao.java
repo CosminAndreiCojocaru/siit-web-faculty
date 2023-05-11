@@ -32,13 +32,14 @@ public class StudentDao {
     }
 
     private Student extractSearch(ResultSet rs, int rowNumb) throws SQLException{
+        int id = rs.getInt("id");
         String name = rs.getString("name");
         String phone = rs.getString("phone");
         String email = rs.getString("email");
         Date date = rs.getDate("birthday");
         String city = rs.getString("city");
         String qualification = rs.getString("qualification");
-        return new Student(name, phone, email, date, city, qualification);
+        return new Student(id, name, phone, email, date, city, qualification);
     }
 
     private Student extractCustomer(ResultSet rs, int rowNumb) throws SQLException {

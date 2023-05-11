@@ -4,6 +4,7 @@ package siit.model;
 import java.util.Date;
 import java.util.List;
 
+
 public class Student {
     private int id;
     private String name;
@@ -23,15 +24,6 @@ public class Student {
 
     public Student(int id, String name, String phone, String email, Date date, String city, String qualification) {
         this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.date = date;
-        this.city = city;
-        this.qualification = qualification;
-    }
-
-    public Student(String name, String phone, String email, Date date, String city, String qualification) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -123,7 +115,7 @@ public class Student {
 
 
     public List<Student> getSearch() {
-        return search;
+        return this.search;
     }
 
     public void setSearch(List<Student> search) {

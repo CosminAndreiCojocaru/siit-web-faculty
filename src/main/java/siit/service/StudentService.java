@@ -8,7 +8,7 @@ import siit.model.Student;
 import java.util.List;
 
 @Service
-public class StudentService {
+public class StudentService{
 
     @Autowired
     private StudentDao customerDao;
@@ -18,6 +18,7 @@ public class StudentService {
     private BatchService batchService;
     @Autowired
     private StudentGradePointService studentGradePointService;
+
 
     public void update(Student customer) {
 //        phone number Validation -> phone sa contina doar cifre, un anumit numar de caractere
@@ -37,8 +38,7 @@ public class StudentService {
         return customer;
     }
 
-    public List<Student> search(int keyword){
-        return customerDao.getSearch(keyword);
+    public List<Student> search(Integer id){
+        return customerDao.getSearch(id);
     }
-
 }

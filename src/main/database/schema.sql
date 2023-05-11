@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS batch;
 DROP TABLE IF EXISTS enrollment;
 
 
-CREATE TABLE students
+CREATE TABLE student
 (
     id            char(4) primary key,
     name          varchar(20),
@@ -41,8 +41,8 @@ CREATE TABLE enrollment
     batchid char(4),
     sid     char(4),
     edate   date,
-    primary key (batchid, sid),
-    foreign key (sid) references student (sid),
+    primary key (batchid, id),
+    foreign key (id) references student (id),
     foreign key (batchid) references batch (batchid)
 );
 
@@ -54,7 +54,9 @@ CREATE TABLE teacher
     department varchar(20) primary key,
     dateofjoin date,
     salary     char(6),
-    sex        varchar(1)
+    sex        varchar(1),
+    sid        char(4),
+    foreign key (sid) references student(id)
 
 )
 

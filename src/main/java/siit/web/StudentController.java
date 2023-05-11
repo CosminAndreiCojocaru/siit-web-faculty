@@ -9,6 +9,7 @@ import siit.service.StudentService;
 
 @Controller
 @RequestMapping(path = "/students")
+@RestController
 public class StudentController {
 
     @Autowired
@@ -34,13 +35,6 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("student-enrollments");
         studentService.update(customer);
         mav.setViewName("redirect:/students");
-        return mav;
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/search")
-    public ModelAndView renderSearch(@PathVariable("studentId") int id){
-        ModelAndView mav = new ModelAndView("search-result");
-        mav.addObject("student", studentService.getBy(id));
         return mav;
     }
 }

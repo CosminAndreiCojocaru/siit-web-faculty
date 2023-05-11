@@ -22,9 +22,9 @@ public class StudentGradePointDao {
         return point;
     }
 
-    public List<Teacher> getAllTeachers(Integer customerId){
-        String sql = "select name from teacher, studentgradepoint where studentgradepoint.subject = teacher.department";
-        List<Teacher> points = jdbcTemplate.query(sql, this::extractTeach, customerId);
+    public List<Teacher> getAllTeachers(String teachername){
+        String sql = "select name from teacher, studentgradepoint where studentgradepoint.subject:: varchar = ?";
+        List<Teacher> points = jdbcTemplate.query(sql, this::extractTeach, teachername);
         return points;
     }
 

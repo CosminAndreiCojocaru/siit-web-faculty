@@ -33,7 +33,7 @@ public class StudentGradePointController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/students/{studentId}/studentgradepoints/teacher")
-    public ModelAndView renderPointPage1(@PathVariable Integer studentId){
+    public ModelAndView renderPointPage1(@PathVariable String studentId){
         ModelAndView mav = new ModelAndView("teacher");
         Teacher dbteacer = (Teacher) studentGradePointService.getall(studentId);
         mav.addObject("teachers", dbteacer);

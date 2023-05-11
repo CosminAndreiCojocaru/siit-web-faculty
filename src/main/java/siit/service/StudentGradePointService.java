@@ -18,7 +18,7 @@ public class StudentGradePointService {
         return studentGradePointDao.getAllPoint(id);
     }
 
-    public List<Teacher> getall(Integer id){
+    public List<Teacher> getall(String id){
         return studentGradePointDao.getAllTeachers(id);
     }
 }
