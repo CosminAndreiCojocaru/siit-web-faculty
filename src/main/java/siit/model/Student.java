@@ -6,6 +6,7 @@ import java.util.List;
 
 
 public class Student {
+
     private int id;
     private String name;
     private String phone;
@@ -16,7 +17,7 @@ public class Student {
     List<Enrollment> enrollments;
     List<Batch> batches;
     List<StudentGradePoint> studentGradePoints;
-    List<Student> search;
+
 
 
     public Student() {

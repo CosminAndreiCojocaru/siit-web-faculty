@@ -23,7 +23,12 @@ public class StudentRepository {
 
     public Student getBy(int id) {
         String sql = "SELECT * FROM STUDENT WHERE id:: int = ?";
-        return jdbcTemplate.queryForObject(sql, this::extractCustomer, id);
+
+        List<Student> students = jdbcTemplate.query(sql, this::extractCustomer, id);
+        if (students.isEmpty()) {
+            return null; // Return null if student with given ID doesn't exist
+        }
+        return students.get(0);
     }
 
     private Student extractCustomer(ResultSet rs, int rowNumb) throws SQLException {
@@ -41,6 +46,7 @@ public class StudentRepository {
         String sql = "UPDATE STUDENT SET name=?, phone=?, email=?, birthday=?, city=?, qualification=?  WHERE id =?";
         jdbcTemplate.update(sql, customer.getName(), customer.getPhone(), customer.getEmail(), customer.getDate(), customer.getCity(), customer.getQualification(), customer.getId());
     }
+
 
 
 }

@@ -17,9 +17,37 @@
         <a href="<c:url value="/login"/>" class="btn btn-primary">Logout</a>
         <a href="<c:url value="/teachers"/> " class="btn btn-primary">Teachers</a>
 
+
     </div>
     <div class="clearfix"></div>
 </div>
+
+
+<form method="GET" action="/students/search">
+    <input type="text" name="id" placeholder="Enter student ID">
+    <button type="submit">Search</button>
+</form>
+
+<c:if test="${not empty errorMessage}">
+    <div class="alert alert-danger">
+        <c:out value="${errorMessage}"/>
+    </div>
+</c:if>
+
+<!-- Add the search form -->
+
+<!-- Display the student information if found -->
+<table class="table table-striped">
+    <tr>
+        <!-- ... -->
+    </tr>
+    <c:forEach items="${students}" var="student">
+        <!-- ... -->
+    </c:forEach>
+</table>
+
+
+
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
